@@ -105,7 +105,6 @@ def brute_force_magic_bytes(input_file, output_file):
 
     if successful_magic:
         file_type, final_output = successful_magic
-        print(f"Final valid file found: {final_output}")
         # Rename final file with appropriate extension (remove the magic byte type from the filename)
         os.rename(final_output, f"{output_file}.{file_type}")
         print(f"File successfully saved as {output_file}.{file_type}.")
@@ -144,8 +143,7 @@ def main():
             return
 
     if args.brute:
-        print("Would you like to brute-force all possible file types? (y/n)")
-        user_input = input().lower()
+        user_input=input("Would you still like to continue (y/n):").lower()
         if user_input == 'y':
             brute_force_magic_bytes(args.file, args.output)
         else:
